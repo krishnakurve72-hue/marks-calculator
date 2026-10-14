@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marks & Grade Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-r from-indigo-500 to-white flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-xl shadow-lg w-96">
+
+        <h2 class="text-2xl font-bold text-center text-indigo-600 mb-6">
+            Marks &amp; Grade Calculator
+        </h2>
+
+        <label>Subject 1 Marks:</label>
+        <input type="number" id="s1" placeholder="0 - 100"
+            class="w-full p-2 border rounded mb-4">
+
+        <label>Subject 2 Marks:</label>
+        <input type="number" id="s2" placeholder="0 - 100"
+            class="w-full p-2 border rounded mb-4">
+
+        <label>Subject 3 Marks:</label>
+        <input type="number" id="s3" placeholder="0 - 100"
+            class="w-full p-2 border rounded mb-4">
+
+        <button onclick="showResult()"
+            class="w-full bg-gradient-to-r from-sky-500 to-indigo-600 text-white p-2 rounded font-bold">
+            Show Result
+        </button>
+
+        <div id="output"
+            class="mt-5 p-4 bg-indigo-50 rounded text-center">
+        </div>
+
+    </div>
+
+    <script>
+
+        function showResult() {
+
+            let a = Number(document.getElementById("s1").value);
+            let b = Number(document.getElementById("s2").value);
+            let c = Number(document.getElementById("s3").value);
+
+            let sum = a + b + c;
+            let avg = (sum / 3).toFixed(2);
+
+            let grade = "";
+            if (avg >= 90) grade = "A+";
+            else if (avg >= 80) grade = "A";
+            else if (avg >= 70) grade = "B";
+            else if (avg >= 60) grade = "C";
+            else if (avg >= 40) grade = "D";
+            else grade = "F";
+
+            let status = avg >= 40 ? "Pass" : "Fail";
+
+            document.getElementById("output").innerHTML =
+                "Total Marks: " + sum + "<br>" +
+                "Percentage: " + avg + "%<br>" +
+                "Grade: " + grade + "<br>" +
+                "Status: " + status;
+        }
+
+    </script>
+
+</body>
+</html>
